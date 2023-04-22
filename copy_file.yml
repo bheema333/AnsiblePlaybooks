@@ -1,0 +1,10 @@
+---
+- name: copy a file
+  hosts: webservers[0:1]
+  become: yes
+  tasks:
+  - name: copy file
+    copy:
+     src: /home/bheema/fileZ
+     dest: /tmp
+      

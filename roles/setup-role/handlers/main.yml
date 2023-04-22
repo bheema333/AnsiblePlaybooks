@@ -1,0 +1,7 @@
+---
+# handlers file for setup-role
+
+- name: start service
+  service:
+    name: httpd
+    state: started 

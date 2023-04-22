@@ -1,0 +1,8 @@
+---
+- name: This script creates a user
+  hosts: all
+  become: yes
+  tasks: 
+  - name: creating a user Bheemarjuna
+    user: name=Bheemarjuna
+  

@@ -1,0 +1,31 @@
+---
+- name: tomcat application
+  hosts: webservers[0]
+  become: true
+  tasks:
+  - name: install java on RedHat
+    yum:
+      name: java
+      state: installed
+    when: ansible_os_family == "RedHat"
+
+  - name: download tomcat
+    get_url:
+      url: https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.88/bin/apache-tomcat-8.5.88.tar.gz
+      dest: /opt
+
+  - name: exctract tar file
+    unarchive:
+      src: /opt/apache-tomcat-8.5.88.tar.gz
+      dest: /opt
+      remote_src: yes
+
+  - name: change permission for a file(.sh file)
+    file:
+      path: //opt/apache-tomcat-8.5.88/bin/startup.sh
+      mode: 0777
+
+  - name: execute .sh file to start tomcat file
+    shell: nohup ./startup.sh
+    args:
+      chdir: /opt/apache-tomcat-8.5.88/bin

@@ -1,0 +1,9 @@
+---
+- name: creating a directory
+  hosts: webservers[1]
+  become: yes
+  tasks:
+    - file:
+       path: /tmp/devops
+       state: directory
+

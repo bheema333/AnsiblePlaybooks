@@ -1,0 +1,11 @@
+
+---
+# tasks file for setup-role
+
+- name: install httpd packege
+  yum:
+    name: httpd
+    state: installed
+  when: ansible_os_family == "RedHat"
+  notify: start service 
+    

@@ -1,0 +1,10 @@
+---
+- name: this script cretes a file
+  hosts: webservers[0]
+  become: yes
+  tasks:
+  - name: creating fileX
+    file:
+     path: /tmp/fileX
+     state: touch
+
